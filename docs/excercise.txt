@@ -1,0 +1,7 @@
+Download file PDF yang berisi petunjuk pengerjaan.
+Buatlah laporan dengan isi:
+1. Cover
+2. Kode Program dalam bentuk tabel tanpa border line (kolom 1 berisi nomor baris, kolom 2 berisi kode)
+3. Screenshot hasil dan analisis (analisis program dan screenshot)
+
+Submit source code (file coding) dan 1 laporan dalam format doc (bukan pdf)
