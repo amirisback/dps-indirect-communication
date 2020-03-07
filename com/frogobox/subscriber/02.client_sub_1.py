@@ -11,8 +11,9 @@ from com.frogobox.base.config import *
 ########################################
 def on_message(client, userdata, message):
     print("message received ", str(message.payload.decode("utf-8")))
-    print("message topic=", message.topic)
-    print("message retain flag=", message.retain)
+    print("message topic =", message.topic)
+    print("message retain flag =", message.retain)
+    print("---------------------------------")
 
 
 ########################################
@@ -23,7 +24,7 @@ username = CONFIG_BROKER_USERNAME
 password = CONFIG_BROKER_PASSWORD
 
 # buat client baru bernama P1
-print("creating new instance")
+print("Creating new instance")
 client = mqtt.Client("P1")
 
 # kaitkan callback on_message ke client
@@ -31,7 +32,8 @@ client.on_message = on_message
 client.username_pw_set(username, password)
 
 # buat koneksi ke broker
-print("connecting to broker")
+print("Connecting to broker")
+print("---------------------------------")
 
 client.connect(broker_address, port=1883)  # connect to broker
 
@@ -41,9 +43,11 @@ client.loop_start()
 # client melakukan subsribe ke topik bernama "terserah"
 print("Subscribing to topic", "topik-1")
 client.subscribe("topik_1")
-print("\n")
 print("Subscribing to topic", "topik-2")
 client.subscribe("topik_2")
+print("---------------------------------")
+print("MESSAGE RECEIVED")
+print("---------------------------------")
 
 # loop forever
 while True:
