@@ -4,6 +4,7 @@ import paho.mqtt.client as mqtt
 # import time for sleep()
 import time
 
+from com.frogobox.base.config import *
 
 # buat callback on_message; jika ada pesan
 # maka fungsi ini akan dipanggil secara asynch
@@ -17,7 +18,9 @@ def on_message(client, userdata, message):
 ########################################
 
 # buat definisi nama broker yang akan digunakan
-broker_address = "192.168.1.7"
+broker_address = CONFIG_BROKER_ADDRESS
+username = CONFIG_BROKER_USERNAME
+password = CONFIG_BROKER_PASSWORD
 
 # buat client baru bernama P1
 print("creating new instance")
@@ -25,18 +28,21 @@ client = mqtt.Client("P1")
 
 # kaitkan callback on_message ke client
 client.on_message = on_message
+client.username_pw_set(username, password)
 
 # buat koneksi ke broker
 print("connecting to broker")
+
 client.connect(broker_address, port=1883)  # connect to broker
 
 # jalankan loop client
 client.loop_start()
 
 # client melakukan subsribe ke topik bernama "terserah"
-print("Subscribing to topic", "topik_1")
+print("Subscribing to topic", "topik-1")
 client.subscribe("topik_1")
-print("Subscribing to topic", "topik_2")
+print("\n")
+print("Subscribing to topic", "topik-2")
 client.subscribe("topik_2")
 
 # loop forever
